@@ -122,3 +122,4 @@ if st.button("🚀 Провести анализ", type="primary", use_container
                     messages=[
                         {"role": "system", "content": "Ты полезный AI-ассистент. Отвечай структурированно, используй эмодзи."},
                        
+                    ]
