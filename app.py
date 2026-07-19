@@ -104,3 +104,23 @@ if st.button("🚀 Провести анализ", type="primary", use_container
                             "content": prompt_text
                         }
                     ],
+                    temperature=0.3,
+                    max_tokens=2048
+                )
+                st.session_state.analysis_result = response.choices[0].message.content
+            except Exception as e:
+                st.error(f"Ошибка API: {e}")
+
+# === ВЫВОД РЕЗУЛЬТАТА ===
+if st.session_state.analysis_result:
+    st.divider()
+    st.subheader("📝 Результат анализа")
+    st.markdown(st.session_state.analysis_result)
+    
+    st.download_button(
+        label="📥 Скачать анализ (Markdown)",
+        data=st.session_state.analysis_result,
+        file_name="career_analysis.md",
+        mime="text/markdown",
+        use_container_width=True
+    )
